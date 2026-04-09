@@ -1,0 +1,394 @@
+{
+  "study_structure": {
+    "total_levels": 4,
+    "semesters_per_level": ["fall", "spring"],
+    "optional_semester": {
+      "name": "summer",
+      "type": "intensive",
+      "enabled": true
+    },
+    "instruction_language": "english",
+    "semester_duration": {
+      "regular": {
+        "total_weeks": 17,
+        "study_weeks": 15,
+        "final_exam_weeks": 2
+      },
+      "summer": {
+        "min_weeks": 6
+      }
+    }
+  },
+
+  "graduation_requirements": {
+    "total_credit_hours_required": 140,
+    "minimum_cumulative_gpa": 2.00,
+    "minimum_pass_score_percent": 60,
+    "minimum_pass_grade": "D",
+    "special_courses": {
+      "codes": ["ASU101", "INCO102"],
+      "included_in_gpa": false,
+      "grading_system": "pass_fail",
+      "minimum_pass_score_percent": 50
+    }
+  },
+
+  "academic_load": {
+    "regular_semester": {
+      "min_credit_hours": 12,
+      "max_credit_hours": 19,
+      "extended_max_credit_hours": 21,
+      "extended_max_conditions": {
+        "previous_semester_gpa_threshold": 3.0,
+        "or_final_semester": true
+      },
+      "academic_probation_max_credit_hours": 12,
+      "academically_delayed_max_credit_hours": 16
+    },
+    "summer_semester": {
+      "max_credit_hours": 6
+    }
+  },
+
+  "academic_delay": {
+    "definition": "student_current_level_below_expected_level_based_on_admission_year",
+    "max_credit_hours_when_delayed": 16
+  },
+
+  "course_registration": {
+    "prerequisites_required": true,
+    "senior_exception": {
+      "eligible_level": 4,
+      "allow_concurrent_failed_prerequisite_registration": true,
+      "requires_approval": true
+    },
+    "cross_semester_restriction": {
+      "enabled": true,
+      "exception": "graduation_necessity_only"
+    }
+  },
+
+  "course_code_system": {
+    "format": "XXXX_YYY",
+    "level_indicator": "first_digit_of_numeric_part",
+    "semester_indicator": "last_digit_parity",
+    "level_map": {
+      "1": "level_1",
+      "2": "level_2",
+      "3": "level_3",
+      "4": "level_4"
+    },
+    "semester_map": {
+      "odd": "fall",
+      "even": "spring"
+    }
+  },
+
+  "level_classification": {
+    "based_on": "earned_credit_hours",
+    "levels": {
+      "freshman":  { "min_hours": 0,   "max_hours": 32  },
+      "sophomore": { "min_hours": 33,  "max_hours": 66  },
+      "junior":    { "min_hours": 67,  "max_hours": 100 },
+      "senior":    { "min_hours": 101, "max_hours": null }
+    }
+  },
+
+  "gpa_system": {
+    "range": { "min": 0.0, "max": 4.0 },
+    "calculation": {
+      "quality_points": "course_credits * grade_points",
+      "semester_gpa": "sum(quality_points) / sum(credits)",
+      "cumulative_gpa": "total_quality_points / total_credits"
+    },
+    "grade_map": [
+      { "grade": "A",   "min_percent": 90,  "max_percent": 100, "points": 4.00,        "counted_in_gpa": true  },
+      { "grade": "A-",  "min_percent": 85,  "max_percent": 89,  "points": 3.67,        "counted_in_gpa": true  },
+      { "grade": "B+",  "min_percent": 80,  "max_percent": 84,  "points": 3.33,        "counted_in_gpa": true  },
+      { "grade": "B",   "min_percent": 75,  "max_percent": 79,  "points": 3.00,        "counted_in_gpa": true  },
+      { "grade": "C+",  "min_percent": 70,  "max_percent": 74,  "points": 2.67,        "counted_in_gpa": true  },
+      { "grade": "C",   "min_percent": 65,  "max_percent": 69,  "points": 2.33,        "counted_in_gpa": true  },
+      { "grade": "D",   "min_percent": 60,  "max_percent": 64,  "points": 2.00,        "counted_in_gpa": true  },
+      { "grade": "F",   "min_percent": 0,   "max_percent": 59,  "points": 0.00,        "counted_in_gpa": true  },
+      { "grade": "Abs", "min_percent": null,"max_percent": null, "points": 0.00,        "counted_in_gpa": true,  "raw_input_alias": "غ" },
+      { "grade": "I",   "min_percent": null,"max_percent": null, "points": 0.00,        "counted_in_gpa": false,  "label": "incomplete"  },
+      { "grade": "W",   "min_percent": null,"max_percent": null, "points": 0.00,        "counted_in_gpa": false, "counts_as_fail": false, "label": "withdrawn" },
+      { "grade": "P",   "min_percent": null,"max_percent": null, "points": null,        "counted_in_gpa": false, "label": "pass"        }
+    ],
+    "special_grade_handling": {
+      "raw_arabic_absent_char": "غ",
+      "normalize_to": "Abs",
+      "grades_excluded_from_gpa": ["W", "P", "I"],
+      "grades_with_zero_gpa_impact": ["F", "Abs"]
+    }
+  },
+
+  "course_retake_rules": {
+    "eligible_grades_for_retake": ["F", "Abs", "W", "I"],
+    "gpa_rule": "latest_grade_counts",
+    "max_retake_credit_hours": 12,
+    "grade_cap_after_limit": "D"
+  },
+
+  "academic_probation": {
+    "trigger_gpa_below": 2.0,
+    "max_recovery_semesters": 4,
+    "consequence_if_unrecovered": "dismissal",
+    "max_credit_hours_during_probation": 12
+  },
+
+  "withdrawal_rules": {
+    "add_drop_deadline_week": 2,
+    "withdrawal_deadline_week": 6,
+    "max_total_withdrawals": 8
+  },
+
+  "course_selection_strategy": {
+    "current_semester_courses_priority": true,
+    "priority_is_strict_constraint": false,
+    "failed_courses_handling": {
+      "include_with_current_semester": true,
+      "must_match_current_semester_type": true,
+      "selection_method": "ml_scoring"
+    },
+    "high_gpa_advanced_registration": {
+      "trigger_previous_semester_gpa": 3.0,
+      "allow_higher_level_courses": true,
+      "must_match_current_semester_type": true,
+      "current_level_courses_have_priority": true
+    }
+  },
+
+  "elective_course_selection": {
+    "selection_trigger": "multiple_courses_with_same_type_level_and_semester",
+    "max_selections": 1,
+    "selection_method": "ml_based",
+    "ml_factors": [
+      "student_performance",
+      "course_difficulty",
+      "similar_students_history"
+    ]
+  },
+
+  "graduation_necessity_courses": {
+    "can_open_outside_normal_semester": true,
+    "system_behavior": "add_as_alternative_courses",
+    "each_course_assigned_ml_score": true,
+    "student_can_replace_lower_score_courses": true
+  },
+
+  "summer_semester_registration": {
+    "eligible_grades": ["F"],
+    "course_availability": "depends_on_system_input",
+    "selection_method": "ml_score_ranking",
+    "ml_factors": [
+      "probability_of_improvement",
+      "student_history"
+    ]
+  },
+
+  "enrollment_constraints": {
+    "enforce_credit_hour_limits": true,
+    "enforce_prerequisites": true,
+    "enforce_level_priority": true,
+    "enforce_semester_matching": true
+  },
+
+  "course_schema": {
+    "required_fields": [
+      "course_code",
+      "course_name",
+      "type",
+      "credit_hours",
+      "is_elective",
+      "is_practical"
+    ],
+    "is_elective_values": ["core", "elective"],
+    "is_practical_values": ["practical", "not_practical"]
+  },
+
+  "database_schema": {
+    "student_table": {
+      "name": "studentt",
+      "fields": ["ID", "CGPA", "Program", "Earned_Hours", "Last_Semester_GPA", "Level", "Admission_Year"]
+    },
+    "enrollment_table": {
+      "name": "enrollement",
+      "fields": ["enrollment_ID", "student_id", "course_code", "course_gpa", "course_grade", "Year", "Semester"]
+    },
+    "relational_integrity_rules": {
+      "no_enrollment_without_valid_student": true,
+      "no_enrollment_without_valid_course": true,
+      "prerequisites_must_reference_valid_courses": true,
+      "enrollment_must_respect_prerequisites": true
+    }
+  },
+
+  "system_data_flow": {
+    "steps": [
+      {
+        "step": 1,
+        "name": "student_input",
+        "description": "Student uploads academic record as Arabic PDF"
+      },
+      {
+        "step": 2,
+        "name": "pdf_processing",
+        "description": "System processes the uploaded PDF"
+      },
+      {
+        "step": 3,
+        "name": "data_extraction",
+        "extracted_student_fields": ["ID", "CGPA", "Program", "Earned_Hours", "Last_Semester_GPA", "Level", "Admission_Year"],
+        "extracted_course_fields": ["course_code", "course_name", "grade", "academic_year", "semester"],
+        "grade_normalization": {
+          "arabic_absent": { "raw": "غ", "normalized": "Abs" },
+          "semester_mapping": ["Fall", "Spring", "Summer"]
+        }
+      },
+      {
+        "step": 4,
+        "name": "ml_processing",
+        "actions": ["predict_performance", "rank_courses"]
+      },
+      {
+        "step": 5,
+        "name": "output",
+        "outputs": ["recommended_ranked_courses", "alternative_courses", "chatbot_explanation"]
+      }
+    ]
+  },
+
+  "ml_system": {
+    "role": "optimization_only",
+    "can_violate_academic_rules": false,
+    "scope": "choose_best_valid_option_within_rules",
+    "course_scoring_factors": [
+      "student_previous_grades",
+      "course_difficulty",
+      "similar_students_performance",
+      "student_behavior_pattern"
+    ],
+    "course_difficulty_source": "learned_from_data",
+    "course_difficulty_manually_defined": false,
+    "difficulty_learning_signals": [
+      "historical_grades",
+      "failure_rates",
+      "student_patterns"
+    ],
+    "output_structure": [
+  "course_code": "string",
+  "score": "float",
+  "expected_gpa": "float",
+    "expected_gpa_impact": "float",
+  "reasoning_factors": ["array"]
+    ],
+    "output_types": ["main_recommended_courses", "alternative_courses"]
+  },
+
+  "ai_assistant_responsibilities": {
+    "academic_assistance": {
+      "enabled": true,
+      "topics": ["academic_rules", "gpa_system", "registration_rules", "graduation_requirements"]
+    },
+    "decision_explanation": {
+      "enabled": true,
+      "explains": ["why_courses_recommended", "why_alternatives_exist", "expected_gpa_impact"]
+    },
+    "guidance": {
+      "enabled": true,
+      "goals": ["improve_gpa", "choose_better_courses", "understand_academic_status"]
+    },
+    "role": "academic_advisor_and_ml_explainer"
+  },
+
+  "ml_feature_engineering": {
+    "core_academic_features": ["CGPA", "Last_Semester_GPA", "Level", "Earned_Hours", "Remaining_Hours"],
+    "performance_features": ["Failed_Courses_Count", "Repeated_Courses_Count", "Improvement_Trend", "GPA_Variance"],
+    "semester_features": ["Fall_GPA_Avg", "Spring_GPA_Avg", "Best_Semester_Type"],
+    "course_type_features": ["STAT_GPA_Avg", "COMP_GPA_Avg", "REQ_GPA_Avg"],
+    "course_nature_features": ["Practical_GPA_Avg", "Not_Practical_GPA_Avg", "Preferred_Course_Nature"],
+    "behavior_features": ["Credit_Load_Behavior", "Withdrawal_Count", "Absence_Count", "Incomplete_Count"],
+    "learning_features": ["Difficulty_Exposure", "Course_History_Pattern", "Course_Type_Preference"],
+    "constraint_features": ["Prerequisite_Completion_Ratio"]
+  },
+
+  "data_generation": {
+    "constraints": {
+      "fixed_admission_year": 2022,
+      "admission_year_used_as_ml_feature": false,
+      "admission_year_used_for_validation": true,
+      "allowed_student_levels": [3, 4],
+      "gpa_range": { "min": 0.0, "max": 4.0 },
+      "valid_grades": ["A", "A-", "B+", "B", "C+", "C", "D", "F", "Abs", "W", "P", "I"]
+    },
+    "cgpa_distribution": {
+      "reference_sample": [3.248, 3.022, 2.224, 3.448, 3.303, 3.251, 2.328, 2.238],
+      "max_deviation": 0.4,
+      "enforce_natural_variation": true,
+      "disallow_uniform_distribution": true,
+      "expected_distribution_bands": {
+        "high_performers": { "cgpa_min": 3.3, "cgpa_max": 4.0 },
+        "average_students": { "cgpa_min": 2.5, "cgpa_max": 3.3 },
+        "struggling_students": { "cgpa_min": 1.9, "cgpa_max": 2.4 }
+      }
+    },
+    "academic_progression": {
+      "simulate_improvement_over_time": true,
+      "simulate_consistent_struggle": true,
+      "simulate_fluctuation": true,
+      "disallow_perfect_straight_gpa": true
+    },
+    "student_behavior_modeling": {
+      "students_are_optimal": false,
+      "inject_non_optimal_choices": true,
+      "inject_randomness": true,
+      "inject_imperfect_decisions": true,
+      "behavior_examples": [
+        "choosing_harder_course_despite_risk",
+        "ignoring_best_recommendation",
+        "taking_overload_occasionally"
+      ]
+    },
+    "semester_behavior": {
+      "mostly_follow_correct_semester_courses": true,
+      "allow_alternative_graduation_cases": true,
+      "allow_course_retakes": true
+    },
+    "student_diversity": {
+      "include_high_achievers": true,
+      "include_average_students": true,
+      "include_struggling_students": true
+    },
+    "realistic_behavior_injection": {
+      "enabled": true,
+      "purpose": "prevent_ml_overfitting_and_unrealistic_predictions",
+      "inject_selection_mistakes": true,
+      "inject_random_decisions": true,
+      "inject_non_optimal_scheduling": true
+    },
+    "prerequisite_constraint": {
+      "enforce_ordering": true,
+      "course_cannot_appear_before_prerequisite": true
+    },
+    "categorical_constraints": {
+      "enforce_valid_grade_categories": true,
+      "enforce_valid_course_types": true,
+      "enforce_valid_levels": true,
+      "enforce_valid_semester_values": true
+    },
+    "gpa_integrity": {
+      "gpa_must_match_calculated_grades": true,
+      "random_gpa_values_prohibited": true
+    },
+    "student_level_consistency": {
+      "level_must_align_with_earned_hours": true,
+      "level_must_align_with_admission_year": true
+    }
+"data_privacy": {
+  "student_data_persistence": "temporary",
+  "session_based_storage": true,
+  "auto_delete_on_session_end": true
+      }
+  }
+}
