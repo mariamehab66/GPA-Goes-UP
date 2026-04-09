@@ -276,13 +276,13 @@
       "failure_rates",
       "student_patterns"
     ],
-    "output_structure": [
-  "course_code": "string",
-  "score": "float",
-  "expected_gpa": "float",
-    "expected_gpa_impact": "float",
-  "reasoning_factors": ["array"]
-    ],
+    "output_structure": {
+      "course_code": "string",
+      "score": "float",
+      "expected_gpa": "float",
+      "expected_gpa_impact": "float",
+      "reasoning_factors": "array"
+    },
     "output_types": ["main_recommended_courses", "alternative_courses"]
   },
 
@@ -384,11 +384,83 @@
     "student_level_consistency": {
       "level_must_align_with_earned_hours": true,
       "level_must_align_with_admission_year": true
-    }
-"data_privacy": {
+    },
+    "data_privacy": {
   "student_data_persistence": "temporary",
   "session_based_storage": true,
   "auto_delete_on_session_end": true
       }
+  },
+
+  "course_name_mapping": {
+    "الأمن والسلامة": "Safety and Security",
+    "القضايا مجتمعية": "Societal issues",
+    "تفاضل وتكامل (1)": "Calculus I",
+    "فيزياء عامة (1)": "Physics I",
+    "كيمياء عامة (1)": "General Chemistry I",
+    "عملي كيمياء عامة (1)": "General Chemistry Lab",
+    "مقدمة في الإحصاء": "Introduction to Statistics",
+    "لغة إنجليزية (1)": "English Language I",
+    "مدخل في الحاسب الآلي": "Introduction to Computer Science",
+    "تفاضل وتكامل (2)": "Calculus II",
+    "مفاهيم أساسية في الرياضيات": "Fundamentals of Mathematics",
+    "نظرية الاحتمالات (1)": "Probability Theory I",
+    "مقدمة في الحاسب الآلى": "Introduction to Computer Science",
+    "برمجة حاسب (1)": "Computer Programming I",
+    "لغة إنجليزية (2)": "English Language II",
+    "نظرية الإحصاء (1)": "Statistical Theory I",
+    "طرق إحصائية (1)": "Statistical Methods I",
+    "رياضيات إحصائية": "Statistical Mathematics",
+    "تصميم وتحليل الخوارزميات": "Design and Analysis of Algorithms",
+    "نظم قواعد بيانات": "Database Systems",
+    "نظرية الإحصاء (2)": "Statistical Theory II",
+    "طرق إحتمالية لبحوث العمليات (1)": "Probabilistic Methods for Operations Research I",
+    "مبادئ تحليل الإنحدار": "Principles of Regression Analysis",
+    "تراكيب البيانات": "Data Structures",
+    "برمجة حاسب متقدم": "Advanced Computer Programming",
+    "شبكات الحاسب": "Computer Networks",
+    "برمجة الويب": "Web Programming",
+    "نظرية الآليات الذاتية": "Theory of Automata",
+    "التفكير العلمي": "Scientific Thinking",
+    "إستدلال إحصائي (1)": "Statistical Inference I",
+    "عمليات عشوائية (1)": "Stochastic Processes I",
+    "إحصاءات مرتبة": "Ordered Statistics",
+    "نظرية التعقد": "Theory of Computation",
+    "نظم التشغيل": "Operating Systems",
+    "قواعد ودلالات لغات البرمجة": "Programming Languages Syntax and Semantics",
+    "نظم الوسائط المتعددة": "Multimedia Systems",
+    "اللغات التصريحية": "Declarative Languages",
+    "أخلاقيات البحث العلمي": "Research Ethics",
+    "إستدلال احصائي (2)": "Statistical Inference II",
+    "طرق المعاينة": "Sampling Methods",
+    "نظرية الصلاحية": "Reliability Theory",
+    "تألفيات خوارزمية": "Algorithm Specifications",
+    "تشفير": "Cryptography",
+    "تصميم مولفات": "Compiler Design",
+    "رسومات الحاسب": "Computer Graphics",
+    "مهارات العمل": "Work Skills",
+    "تصميم وتحليل التجارب": "Design and Analysis of Experiments",
+    "تحليل إحصائي متعدد": "Multivariate Statistical Analysis",
+    "التحليل التتابعي": "Sequential Analysis",
+    "ذكاء اصطناعي": "Artificial Intelligence",
+    "المعالجة المتوازية والموزعة": "Parallel and Distributed Processing",
+    "معالجة الصور": "Image Processing",
+    "الهندسة الحسابية": "Computational Geometry",
+    "موضوعات مختارة في الخوارزميات": "Selected Topics in Algorithms",
+    "سلاسل زمنية": "Time Series Analysis",
+    "عمليات عشوائية (2)": "Stochastic Processes II",
+    "مشروع بحثي في الإحصاء": "Research Project in Statistics",
+    "نظرية الطوابير": "Queueing Theory",
+    "المعلوماتية الحيوية": "Bioinformatics",
+    "مشروع حاسب (لمزدوج التخصص)": "Computer Project",
+    "هندسة البرمجيات": "Software Engineering",
+    "موضوعات مختارة في الحوسبة": "Selected Topics in Computing",
+    "إستخلاص البيانات والويب": "Data Mining and Web"
+  },
+
+  "course_name_matching_rule": {
+    "enabled": true,
+    "description": "If an extracted Arabic course name does not exactly match a key, the system should map it to the closest available name using approximate string matching (handling minor spelling differences, spacing, or variations)."
   }
 }
+
