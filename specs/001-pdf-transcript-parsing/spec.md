@@ -57,7 +57,7 @@ producing incorrect output.
 formatting. The system must be production-ready for actual student uploads, not only
 for a single controlled sample.
 
-**Independent Test**: Upload multiple transcripts from `sample_academic_records/`
+**Independent Test**: Upload multiple transcripts from `data/sample_academic_record/`
 representing different format variants; all must produce valid structured output with
 no missing required fields and no parsing errors.
 
@@ -70,11 +70,6 @@ no missing required fields and no parsing errors.
 2. **Given** a transcript with extra whitespace, merged cells, or inconsistent line
    breaks, **When** it is processed, **Then** the system extracts data without
    truncation or misalignment errors.
-
-3. **Given** a transcript where a course name is fully in Arabic, **When** the system
-   processes it, **Then** the Arabic course name is preserved as-is in the output
-   (no translation is attempted; normalization applies only to grade symbols and
-   semester labels).
 
 ---
 
@@ -123,8 +118,8 @@ each must produce a specific, user-facing error message — no crash, no partial
   label of the first semester in the transcript (e.g., "2022-2023" → admission year 2022).
 - **FR-004**: The system MUST parse each semester section and extract: semester type,
   academic year, the list of courses in that semester, and the semester GPA.
-- **FR-005**: For each course record, the system MUST extract: course code, course name,
-  course grade, and course GPA.
+- **FR-005**: For each course record, the system MUST extract: course code, course grade,
+  and course GPA.
 - **FR-006**: The system MUST normalize all Arabic semester labels to English equivalents
   (Fall, Spring, Summer) using the mappings defined in `academic_config.json`.
 - **FR-007**: The system MUST normalize the Arabic absent grade symbol (غ) to `Abs`
@@ -133,42 +128,39 @@ each must produce a specific, user-facing error message — no crash, no partial
   grade map, the system MUST store the grade as `"Unknown"`, attach a field-level warning
   to that course record, and continue parsing the remainder of the transcript without
   failing or dropping the course record.
-- **FR-008**: The system MUST map extracted Arabic course names to their corresponding English names using the `course_name_mapping` defined in `academic_config.json`. 
- Exact matching MUST be attempted first.
-If no exact match is found, the system MUST map the course name to the closest available match based on approximate string similarity (handling minor spelling differences, spacing, or variations).
-- **FR-009**: The system MUST derive the student's current level (Freshman / Sophomore /
+- **FR-008**: The system MUST derive the student's current level (Freshman / Sophomore /
   Junior / Senior) from total earned hours using the level classification thresholds
   in `academic_config.json`.
-- **FR-010**: The system MUST identify the most recent semester in the transcript as
+- **FR-009**: The system MUST identify the most recent semester in the transcript as
   the student's current academic context, using its GPA as `Last_Semester_GPA`.
-- **FR-011**: The system MUST NOT extract student IDs from the PDF; student IDs MUST
+- **FR-010**: The system MUST NOT extract student IDs from the PDF; student IDs MUST
   be generated internally by the system and not sourced from transcript content.
-- **FR-012**: The system MUST NOT extract enrollment IDs from the PDF; enrollment IDs
+- **FR-011**: The system MUST NOT extract enrollment IDs from the PDF; enrollment IDs
   MUST be generated internally per course enrollment record.
-- **FR-013**: The structured output MUST conform to the schema defined in
+- **FR-012**: The structured output MUST conform to the schema defined in
   `academic_config.json`:
   - Student record fields: `CGPA`, `Program`, `Earned_Hours`, `Last_Semester_GPA`,
     `Level`, `Admission_Year`
   - Enrollment record fields per course: `course_code`, `course_grade`, `course_gpa`,
     `Year`, `Semester`
-- **FR-014**: The system MUST be robust to format variations across transcripts;
+- **FR-013**: The system MUST be robust to format variations across transcripts;
   differences in spacing, column ordering, and layout MUST NOT cause extraction failure.
-- **FR-015**: Before passing records downstream, the system MUST validate that all
+- **FR-014**: Before passing records downstream, the system MUST validate that all
   mandatory output fields are present; if a mandatory field cannot be extracted,
   the system MUST report a specific missing-field error rather than silently producing
   an incomplete record.
-- **FR-016**: The system MUST reject non-PDF files with a clear, user-facing error message.
-- **FR-017**: The system MUST reject PDFs that do not contain a recognizable transcript
+- **FR-015**: The system MUST reject non-PDF files with a clear, user-facing error message.
+- **FR-016**: The system MUST reject PDFs that do not contain a recognizable transcript
   structure with a clear, user-facing error message.
-- **FR-018**: All student data extracted from a transcript MUST be stored only for the
+- **FR-017**: All student data extracted from a transcript MUST be stored only for the
   duration of the active session and deleted automatically when the session ends,
   per `academic_config.json` data privacy settings.
-- **FR-019**: If one or more semester sections cannot be parsed but the student-level
+- **FR-018**: If one or more semester sections cannot be parsed but the student-level
   header and at least one semester are successfully extracted, the system MUST return
   the successfully parsed data and include a warning that lists each semester section
   that failed extraction by its academic year and semester type. The student MUST be
   notified and may choose to proceed with the partial result or re-upload a cleaner file.
-- **FR-020**: The system MUST preserve multiple occurrences of the same course code
+- **FR-019**: The system MUST preserve multiple occurrences of the same course code
   across semesters as separate enrollment records (retake scenario); no deduplication
   by course code is performed.
 
@@ -183,9 +175,8 @@ If no exact match is found, the system MUST map the course name to the closest a
   (e.g., "2022-2023"), `semester_gpa`, and a list of associated course records.
 
 - **CourseRecord**: Represents one course enrollment within a semester.
-  Fields: `course_code`,`course_grade`
-  (normalized), `course_gpa`, `Year`, `Semester`. The `enrollment_ID` and
-  `student_id` are system-generated.
+  Fields: `course_code`, `course_grade` (normalized), `course_gpa`, `Year`, `Semester`.
+  The `enrollment_ID` and `student_id` are system-generated.
 
 - **ParseResult**: The complete output of one parsing operation. Contains one
   `StudentRecord` and a flat list of `CourseRecord` entries (each tagged with
@@ -197,7 +188,7 @@ If no exact match is found, the system MUST map the course name to the closest a
 
 - **SC-001**: All required student-level fields (`CGPA`, `Earned_Hours`,
   `Last_Semester_GPA`, `Level`, `Admission_Year`) are correctly extracted from
-  100% of sample transcripts in `sample_academic_records/`.
+  100% of sample transcripts in `data/sample_academic_record/`.
 - **SC-002**: All Arabic grade symbols and semester labels are normalized to the
   correct English values with zero normalization errors across all sample files.
 - **SC-003**: Transcripts with format variations (different layouts, spacing, column
@@ -205,15 +196,15 @@ If no exact match is found, the system MUST map the course name to the closest a
   missing mandatory fields in the output.
 - **SC-004**: Invalid or non-transcript file uploads produce a user-facing error
   message within 5 seconds, with no application crash or silent failure.
-- **SC-009**: A valid transcript is fully parsed and structured output is ready for
+- **SC-005**: A valid transcript is fully parsed and structured output is ready for
   downstream processing within 30 seconds of upload submission.
-- **SC-005**: The structured output for every successfully parsed transcript is
+- **SC-006**: The structured output for every successfully parsed transcript is
   accepted without schema validation errors by the downstream storage layer.
-- **SC-006**: Zero student IDs or enrollment IDs are sourced from PDF content;
+- **SC-007**: Zero student IDs or enrollment IDs are sourced from PDF content;
   all IDs in the output are confirmed as system-generated.
-- **SC-007**: No extracted student data persists beyond the end of the session in
+- **SC-008**: No extracted student data persists beyond the end of the session in
   which it was uploaded, confirmed by post-session storage inspection.
-- **SC-008**: When a transcript is partially parsed (one or more semester sections fail),
+- **SC-009**: When a transcript is partially parsed (one or more semester sections fail),
   the system produces a warning message identifying each failed section by academic year
   and semester type, with no silent omission of data.
 
@@ -236,8 +227,8 @@ If no exact match is found, the system MUST map the course name to the closest a
 - `academic_config.json` (at `docs/rules/academic_config.json`) is the single
   authoritative source for grade mappings, semester label mappings, level
   classification thresholds, and output schema field definitions.
-- Course names are stored in Arabic exactly as extracted; no translation service
-  is in scope for this feature.
+- Course names are NOT extracted or processed in this feature; they will be handled
+  in a separate downstream module.
 - Credit hours per course are not directly listed in the transcript and are therefore
   not extracted here; they are resolved downstream from the course catalog by course code.
 - One student uploads one transcript per session; batch or multi-file upload is out

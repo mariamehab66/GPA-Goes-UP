@@ -8,8 +8,8 @@
 Parse Arabic-language PDF academic transcripts uploaded by students, extracting
 structured student-level data and a complete semester-by-semester course enrollment
 history. All Arabic content (grade symbols, semester labels) is normalized to English
-equivalents using mappings from `academic_config.json`. Course names are mapped to
-English via the course catalog (`data/database/courses.csv`). The output conforms
+equivalents using mappings from `academic_config.json`. Course names are intentionally
+out of scope and will be handled in a separate module. The output conforms
 to the `Student` and `Enrollment` table schemas and is stored session-scoped, ready
 for downstream rule-engine and ML processing. The parser must be robust to format
 variations across real transcripts and handle partial parse failures gracefully.
@@ -17,7 +17,7 @@ variations across real transcripts and handle partial parse failures gracefully.
 ## Technical Context
 
 **Language/Version**: Python 3.11
-**Primary Dependencies**: pdfplumber (PDF text extraction), arabic-reshaper + python-bidi (Arabic text normalization), fuzzywuzzy or rapidfuzz (approximate course name matching), Flask or FastAPI (web endpoint), SQLAlchemy (ORM/session management)
+**Primary Dependencies**: pdfplumber (PDF text extraction), arabic-reshaper + python-bidi (Arabic text normalization), Flask (web endpoint), SQLAlchemy (ORM/session management)
 **Storage**: MySQL (existing schema — `Student`, `Enrollment`, `Course`, `Prerequisite` tables); session-scoped only for this feature
 **Testing**: pytest with sample PDFs from `data/sample_academic_record/`
 **Target Platform**: Web service (backend module, Linux/Windows compatible)
@@ -69,7 +69,6 @@ backend/
 │   │   ├── pdf_extractor.py        # Raw text extraction from Arabic PDF
 │   │   ├── transcript_parser.py    # Structure detection (header, semesters, courses)
 │   │   ├── normalizer.py           # Grade + semester label normalization
-│   │   ├── course_name_mapper.py   # Arabic → English course name mapping
 │   │   └── validator.py            # Output schema validation + missing-field errors
 │   ├── models/
 │   │   ├── student_record.py       # StudentRecord dataclass

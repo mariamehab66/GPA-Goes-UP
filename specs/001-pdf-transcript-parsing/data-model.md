@@ -54,10 +54,8 @@ allowed (retake scenario — FR-020). Written to `Enrollment` table tagged with 
 | `Year` | INT | Semester section academic year label | e.g., 2022 from "2022-2023" |
 | `Semester` | VARCHAR(20) | Semester section label (normalized) | One of: `Fall`, `Spring`, `Summer` |
 
-**Note**: `Course_Name` (English) is stored in the `Course` table by `Course_Code`.
-The parser resolves the English name from `data/database/courses.csv` during
-normalization and uses it to populate display output, but the `Enrollment` table
-itself does not store course name (it is looked up via the FK to `Course`).
+**Note**: Course names are NOT extracted or stored by this feature. They are resolved
+downstream from the `Course` table via the `Course_Code` FK when needed for display.
 
 ---
 
