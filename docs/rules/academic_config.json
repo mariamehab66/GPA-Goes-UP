@@ -26,7 +26,7 @@
     "minimum_pass_score_percent": 60,
     "minimum_pass_grade": "D",
     "special_courses": {
-      "codes": ["ASU101", "INCO102"],
+      "codes": ["ASU101", "INCO 102"],
       "included_in_gpa": false,
       "grading_system": "pass_fail",
       "minimum_pass_score_percent": 50
