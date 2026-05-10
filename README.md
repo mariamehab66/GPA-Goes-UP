@@ -38,7 +38,8 @@ This system solves these problems by providing **data-driven, personalized recom
   * Grades
   * GPA
   * Credit hours
-* Convert data into structured format for analysis
+  * Student data
+* Convert data into structured format for analysis, put it into MYSQL's database
 
 ---
 
@@ -62,8 +63,7 @@ After processing the student record, the system:
 * Assigns a **score for each course** based on:
 
   * Student performance
-  * Course difficulty
-  * Similar students' history
+  * student's history
 
 ---
 
@@ -76,6 +76,7 @@ After processing the student record, the system:
 
 #### 🔹 Cumulative GPA Calculator
 
+* Has two options: Auto fill from acdemic records from the data base, or enter required data
 * Combine previous GPA with current semester
 * Compute updated CGPA
 
@@ -96,6 +97,7 @@ After processing the student record, the system:
 ### 6. 🎯 Target GPA Predictor
 
 * Input desired GPA target
+* Select from two options: Auto fill from acdemic records from the data base, or enter required data
 * System calculates:
 
   * Required GPA per semester
@@ -115,14 +117,6 @@ Provides:
 
 ---
 
-### 8. 📊 Data Visualization
-
-* GPA trends over semesters
-* Performance insights
-* Future projections
-
----
-
 ## 🤖 Machine Learning Components
 
 The system uses ML to:
@@ -131,9 +125,8 @@ The system uses ML to:
 
 Predict how suitable each course is for the student based on:
 
-* Academic history
+* Student's academic history 
 * Performance in similar subjects
-* Patterns from similar students
 
 ---
 
@@ -142,32 +135,29 @@ Predict how suitable each course is for the student based on:
 Estimate expected GPA for:
 
 * Selected courses
-* Future semesters
+* Future semester
 
 ---
 
 ### ✔️ Student Pattern Analysis
 
-* Identify similar student profiles
 * Use historical patterns of the student to improve recommendations
 
 ---
 
 ## 🧠 Data Strategy
 
-Due to limited real student data:
 
 * Data of courses and prerequests courses is used as base
 * Small real student data is used
-* Synthetic data is generated to simulate large-scale student data to use to train the machien learning
-* ML models are trained on this enriched dataset
+* ML models are trained on this Small real student
 
 ---
 
 ## ⚙️ System Workflow
 
 1. Student uploads academic record (PDF)
-2. System extracts and processes data
+2. System extracts, processes data, and save it in session based student object
 3. Rule Engine determines:
 
    * Eligible courses
@@ -181,6 +171,7 @@ Due to limited real student data:
 6. Student can:
 
    * Use GPA tools
+   * Set GPA calculator
    * Simulate outcomes
    * Set GPA targets
    * Ask chatbot for explanations

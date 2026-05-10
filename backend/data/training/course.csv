@@ -1,0 +1,63 @@
+SAFS 101,REQ,Safety and Security,1,FALSE,FALSE,1,Fall
+ASU101,REQ,Societal issues,0,FALSE,FALSE,1,Fall
+MATH 101,Math,Calculus I,4,FALSE,FALSE,1,Fall
+PHYS 101,PHYS,Physics I,4,FALSE,TRUE,1,Fall
+CHEM 101,CHEM,General Chemistry I,3,FALSE,FALSE,1,Fall
+CHEM 103,CHEM,General Chemistry Lab,1,FALSE,TRUE,1,Fall
+STAT 101,STAT,Introduction to Statistics,3,FALSE,FALSE,1,Fall
+ENGL 102,REQ,English Language I,2,FALSE,FALSE,1,Spring
+INCO 102,REQ,Introduction to Computer Science,0,FALSE,FALSE,1,Spring
+MATH 102,MATH,Calculus II,3,FALSE,FALSE,1,Spring
+MATH 104,MATH,Fundamentals of Mathematics,3,FALSE,FALSE,1,Spring
+STAT 102,STAT,Probability Theory I,3,FALSE,FALSE,1,Spring
+COMP 102,COMP,Introduction to Computer Science,3,FALSE,TRUE,1,Spring
+COMP 104,COMP,Computer Programming I,3,FALSE,TRUE,1,Spring
+ENGL 201,REQ,English Language II,2,FALSE,FALSE,2,Fall
+STAT 201,STAT,Statistical Theory I,3,FALSE,FALSE,2,Fall
+STAT 203,STAT,Statistical Methods I,3,FALSE,TRUE,2,Fall
+STAT 205,STAT,Statistical Mathematics,3,FALSE,FALSE,2,Fall
+COMP 201,COMP,Design and Analysis of Algorithms,3,FALSE,FALSE,2,Fall
+COMP 207,COMP,Database Systems,4,FALSE,TRUE,2,Fall
+STAT 202,STAT,Statistical Theory II,3,FALSE,FALSE,2,Spring
+STAT 204,STAT,Probabilistic Methods for Operations Research I,3,FALSE,FALSE,2,Spring
+STAT 208,STAT,Principles of Regression Analysis,3,FALSE,TRUE,2,Spring
+COMP 202,COMP,Data Structures,3,FALSE,TRUE,2,Spring
+COMP 212,COMP,Advanced Computer Programming,3,FALSE,TRUE,2,Spring
+COMP 204,COMP,Computer Networks,3,TRUE,TRUE,2,Spring
+COMP 206,COMP,Web Programming,3,TRUE,TRUE,2,Spring
+COMP 208,COMP,Theory of Automata,3,TRUE,FALSE,2,Spring
+SCTH 301,REQ,Scientific Thinking,1,FALSE,FALSE,3,Fall
+STAT 301,STAT,Statistical Inference I,3,FALSE,FALSE,3,Fall
+STAT 303,STAT,Stochastic Processes I,3,FALSE,FALSE,3,Fall
+STAT 305,STAT,Ordered Statistics,3,FALSE,FALSE,3,Fall
+COMP 305,COMP,Theory of Computation,3,FALSE,FALSE,3,Fall
+COMP 307,COMP,Operating Systems,3,FALSE,FALSE,3,Fall
+COMP 303,COMP,Programming Languages Syntax and Semantics,2,TRUE,FALSE,3,Fall
+COMP 309,COMP,Multimedia Systems,2,TRUE,TRUE,3,Fall
+COMP 311,COMP,Declarative Languages,2,TRUE,TRUE,3,Fall
+ETHR 302,REQ,Research Ethics,1,FALSE,FALSE,3,Spring
+STAT 302,STAT,Statistical Inference II,3,FALSE,FALSE,3,Spring
+STAT 304,STAT,Sampling Methods,3,FALSE,FALSE,3,Spring
+STAT 314,STAT,Reliability Theory,2,FALSE,FALSE,3,Spring
+COMP 302,COMP,Algorithm Specifications,2,FALSE,FALSE,3,Spring
+COMP 308,COMP,Cryptography,3,FALSE,FALSE,3,Spring
+COMP 304,COMP,Compiler Design,3,TRUE,TRUE,3,Spring
+COMP 306,COMP,Computer Graphics,3,TRUE,TRUE,3,Spring
+SKIL 401,REQ,Work Skills,1,FALSE,FALSE,4,Fall
+STAT 405,STAT,Design and Analysis of Experiments,4,FALSE,TRUE,4,Fall
+STAT 415,STAT,Multivariate Statistical Analysis,2,FALSE,FALSE,4,Fall
+STAT 411,STAT,Sequential Analysis,2,FALSE,FALSE,4,Fall
+COMP 401,COMP,Artificial Intelligence,3,FALSE,FALSE,4,Fall
+COMP 403,COMP,Parallel and Distributed Processing,3,FALSE,TRUE,4,Fall
+COMP 407,COMP,Image Processing,3,TRUE,TRUE,4,Fall
+COMP 411,COMP,Computational Geometry,3,TRUE,FALSE,4,Fall
+COMP 413,COMP,Selected Topics in Algorithms,3,TRUE,FALSE,4,Fall
+STAT 408,STAT,Time Series Analysis,3,FALSE,FALSE,4,Spring
+STAT 418,STAT,Stochastic Processes II,2,FALSE,FALSE,4,Spring
+STAT 424,STAT,Research Project in Statistics,2,FALSE,TRUE,4,Spring
+STAT 412,STAT,Queueing Theory,2,FALSE,FALSE,4,Spring
+COMP 402,COMP,Bioinformatics,3,FALSE,FALSE,4,Spring
+COMP 418,COMP,Computer Project,3,FALSE,TRUE,4,Spring
+COMP 404,COMP,Software Engineering,3,TRUE,TRUE,4,Spring
+COMP 414,COMP,Selected Topics in Computing,3,TRUE,FALSE,4,Spring
+COMP 416,COMP,Data Mining and Web,3,TRUE,FALSE,4,Spring

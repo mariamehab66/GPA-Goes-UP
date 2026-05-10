@@ -1,0 +1,263 @@
+{
+  "study_structure": {
+    "total_levels": 4,
+    "semesters_per_level": ["fall", "spring"],
+    "optional_semester": {
+      "name": "summer",
+      "type": "intensive",
+      "enabled": true
+    },
+    "course_types": ["STAT", "COMP", "REQ"]
+  },
+
+  "graduation_requirements": {
+    "total_credit_hours_required": 140,
+    "minimum_cumulative_gpa": 2.00,
+    "minimum_pass_score_percent": 60,
+    "minimum_pass_grade": "D",
+    "special_courses": {
+      "codes": ["ASU101", "INCO 102"],
+      "included_in_gpa": false,
+      "grading_system": "pass_fail",
+      "minimum_pass_score_percent": 50
+    }
+  },
+
+  "academic_delay": {
+    "definition": "student_current_level_below_expected_level_based_on_admission_year",
+    "max_credit_hours_when_delayed": 16
+  },
+
+  "academic_load": {
+    "regular_semester": {
+      "min_credit_hours": 12,
+      "max_credit_hours": 18,
+      "academic_probation_max_credit_hours": 12,
+      "academically_delayed_max_credit_hours": 16,
+      "gpa_bonus": {
+        "threshold": 3.0,
+        "bonus_hours": 3,
+        "note": "bonus is added dynamically to the student base hours; it does not stack with senior_exception bonus"
+      }
+    },
+    "summer_semester": {
+      "max_credit_hours": 6
+    }
+  },
+
+  "senior_exception": {
+    "eligible_level": 4,
+    "max_remaining_hours_to_trigger": 21,
+    "total_graduation_hours": 140,
+    "bonus_hours": 3,
+    "note": "Grants base_hours + bonus_hours. The student's base is whatever applies to their current status (18 standard, 12 if on probation). A probation senior receives 12 + 3 = 15. Non-additive with gpa_bonus — only one +3 bonus applies per semester."
+  },
+
+  "academic_status_info": {
+    "probation_definition": "Student is on academic probation (CGPA below 2.0). Base registration hours are restricted to a maximum of 12 credit hours per semester to support GPA recovery and avoid academic dismissal.",
+    "delayed_definition": "Student is academically delayed relative to their admission year (Actual Level < Expected Level AND Actual Level < 4). Base registration hours are restricted to a maximum of 16 credit hours per semester."
+  },
+
+  "course_registration": {
+    "prerequisites_required": true,
+    "senior_exception": {
+      "eligible_level": 4,
+      "allow_concurrent_failed_prerequisite_registration": true,
+      "requires_approval": true
+    }
+  },
+
+  "course_code_system": {
+    "format": "XXXX_YYY",
+    "level_indicator": "first_digit_of_numeric_part",
+    "semester_indicator": "last_digit_parity",
+    "level_map": {
+      "1": "level_1",
+      "2": "level_2",
+      "3": "level_3",
+      "4": "level_4"
+    },
+    "semester_map": {
+      "odd": "fall",
+      "even": "spring"
+    }
+  },
+
+  "level_classification": {
+    "based_on": "earned_credit_hours",
+    "levels": {
+      "level 1": { "min_hours": 0,   "max_hours": 32  },
+      "level 2": { "min_hours": 33,  "max_hours": 66  },
+      "level 3": { "min_hours": 67,  "max_hours": 100 },
+      "level 4": { "min_hours": 101, "max_hours": 140 }
+    }
+  },
+
+  "gpa_system": {
+    "cgpa_target_range": { "min": 0, "max": 4.0 },
+    "calculation": {
+      "quality_points": "course_credits * grade_points",
+      "semester_gpa": "sum(quality_points) / sum(credits)",
+      "cumulative_gpa": "total_quality_points / total_credits"
+    },
+    "grade_map": [
+      { "grade": "A",   "points": 4.00, "counted_in_gpa": true },
+      { "grade": "A-",  "points": 3.67, "counted_in_gpa": true },
+      { "grade": "B+",  "points": 3.33, "counted_in_gpa": true },
+      { "grade": "B",   "points": 3.00, "counted_in_gpa": true },
+      { "grade": "C+",  "points": 2.67, "counted_in_gpa": true },
+      { "grade": "C",   "points": 2.33, "counted_in_gpa": true },
+      { "grade": "D",   "points": 2.00, "counted_in_gpa": true },
+      { "grade": "F",   "points": 0.00, "counted_in_gpa": true },
+      { "grade": "Abs", "points": 0.00, "counted_in_gpa": true,  "raw_input_alias": "absent" },
+      { "grade": "I",   "points": null, "counted_in_gpa": false, "label": "incomplete" },
+      { "grade": "W",   "points": null, "counted_in_gpa": false, "counts_as_fail": false, "label": "withdrawn" },
+      { "grade": "P",   "points": null, "counted_in_gpa": false, "label": "pass" }
+    ],
+    "special_grade_handling": {
+      "raw_arabic_absent_char": "غ",
+      "normalize_to": "Abs",
+      "grades_excluded_from_gpa": ["W", "P", "I"],
+      "grades_with_zero_gpa_impact": ["F", "Abs"]
+    }
+  },
+
+  "course_retake_rules": {
+    "eligible_grades_for_retake": ["F", "Abs", "W", "I"],
+    "gpa_rule": {
+      "all_attempts_counted": ["F", "Abs"],
+      "only_latest_attempt_counted": ["W", "I"]
+    },
+    "grade_capping_policy": {
+      "total_career_uncapped_retake_hours": 12,
+      "summer_retakes_consume_career_cap": true,
+      "condition_before_limit": "student_receives_actual_earned_grade",
+      "condition_after_limit": "grade_capped_at_D_regardless_of_actual_score",
+      "note": "Any hours retaken during the summer semester strictly count towards total_career_uncapped_retake_hours. Once this cap is exceeded, the retake grade will be capped at D regardless of the actual grade achieved."
+    }
+  },
+
+  "course_selection_strategy": {
+    "current_semester_courses_priority": true,
+    "priority_is_strict_constraint": true,
+    "max_allowed_levels_per_semester": 2,
+    "suggestion_overflow_buffer_for_alternatives": 3,
+    "buffer_description": "These 3 extra courses are added to the list strictly as fallback/alternative options for the student in the UI, beyond their targeted max credit hours.",
+    "bottleneck_priority_enabled": true,
+    "failed_courses_handling": {
+      "include_with_current_semester": true,
+      "must_match_current_semester_type": true
+    },
+    "high_gpa_advanced_registration": {
+      "trigger_previous_semester_gpa": 3.0,
+      "allow_higher_level_courses": true,
+      "must_match_current_semester_type": true,
+      "current_level_courses_have_priority": true
+    }
+  },
+
+  "elective_course_selection": {
+    "selection_trigger": "semester_contains_elective_courses",
+    "max_selections_per_type_per_semester": 1,
+    "elective_group_key": ["Level", "Semester", "Type"],
+    "rule_engine_behavior": "exclude_elective_group_if_any_member_already_passed",
+    "ml_model_behavior": "rank_options_highest_is_recommended_others_are_alternatives",
+    "ui_presentation_constraint": "mutually_exclusive_selection_group_to_enforce_single_choice"
+  },
+
+  "summer_semester_registration": {
+    "eligible_grades": ["F", "Abs", "W", "I"],
+    "course_availability": "similar_to_student_pattern_in_enrollment_data_sample"
+  },
+
+  "enrollment_constraints": {
+    "enforce_credit_hour_limits": true,
+    "enforce_prerequisites": true,
+    "enforce_level_priority": true,
+    "enforce_semester_matching": true,
+    "semester_behavior": {
+      "mostly_follow_correct_semester_courses": true,
+      "allow_course_retakes": true
+    },
+    "prerequisite_constraint": {
+      "enforce_ordering": true,
+      "course_cannot_appear_before_prerequisite": true
+    }
+  },
+
+"mySQL_database_schema": {
+    "database_name": "gpa_goes_database",
+    "student_table": {
+      "name": "Student",
+      "fields": [
+        "ID", 
+        "CGPA", 
+        "Program", 
+        "Earned_Hours", 
+        "Last_Semester_GPA", 
+        "Level", 
+        "Admission_Year"
+      ]
+    },
+    "enrollment_table": {
+      "name": "Enrollment",
+      "fields": [
+        "Enrollment_ID", 
+        "Course_GPA", 
+        "Course_Code", 
+        "Grade", 
+        "Marks", 
+        "Student_ID", 
+        "Year", 
+        "Semester"
+      ]
+    },
+    "course_table": {
+      "name": "Course",
+      "fields": [
+        "Code", 
+        "Type", 
+        "Course_Name", 
+        "Credit_Hours", 
+        "Is_elective", 
+        "Is_practical", 
+        "Level", 
+        "Semester"
+      ],
+      "is_elective_values": [true, false],
+      "is_practical_values": [true, false]
+    },
+    "prerequisites_table": {
+      "name": "Prerequisite",
+      "fields": [
+        "Course_Code", 
+        "Prerequisite_Course_Code"
+      ]
+    },
+    "relational_integrity_rules": {
+      "no_enrollment_without_valid_student": true,
+      "no_enrollment_without_valid_course": true,
+      "prerequisites_must_reference_valid_courses": true,
+      "enrollment_must_respect_prerequisites": true
+    }
+  },
+
+  "validation_rules": {
+    "enforce_course_existence": true,
+    "enforce_prerequisites": true,
+    "enforce_credit_limits": true,
+    "recalculate_gpa": true,
+    "recalculate_earned_hours": true,
+    "strict_level_matching": true
+  },
+
+  "gpa_integrity": {
+    "gpa_must_match_calculated_grades": true,
+    "random_gpa_values_prohibited": true
+  },
+
+  "student_level_consistency": {
+    "level_must_align_with_earned_hours": true,
+    "level_must_align_with_admission_year": true
+  }
+}

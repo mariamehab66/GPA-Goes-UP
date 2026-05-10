@@ -1,0 +1,364 @@
+[
+  {
+    "id": "reg_max_hours",
+    "category": "registration",
+    "priority": 10,
+    "tags": [
+      "registration",
+      "maximum hours",
+      "credit hours",
+      "overload",
+      "21 hours",
+      "19 hours"
+    ],
+    "english": "The standard maximum academic load is 19 credit hours per regular semester. Students may register up to 21 credit hours if their previous semester GPA was 3.0 or higher, or if they are in their final graduation semester and require exactly those hours to graduate.",
+    "arabic": "الحد الأقصى للعبء الدراسي هو 19 ساعة معتمدة للفصل الدراسي الواحد. يجوز رفع الحد إلى 21 ساعة إذا كان معدل الطالب في الفصل السابق 3.0 نقاط فأكثر، أو إذا توقف تخرج الطالب على السماح له بدراسة 21 ساعة في آخر فصل بالكلية.",
+    "examples": [
+      "A student with a 3.2 GPA can register for 21 hours.",
+      "A senior who needs exactly 21 hours to graduate can register for them."
+    ]
+  },
+
+  {
+    "id": "reg_min_hours",
+    "category": "registration",
+    "priority": 8,
+    "tags": [
+      "minimum hours",
+      "registration",
+      "credit load"
+    ],
+    "english": "The minimum academic load in a regular semester is 12 credit hours unless special approval is granted.",
+    "arabic": "الحد الأدنى للعبء الدراسي في الفصل الدراسي العادي هو 12 ساعة معتمدة ما لم يتم منح موافقة خاصة.",
+    "examples": [
+      "A student cannot normally register only 9 hours in Fall."
+    ]
+  },
+
+  {
+    "id": "reg_probation_hours",
+    "category": "probation",
+    "priority": 10,
+    "tags": [
+      "probation",
+      "academic warning",
+      "12 hours",
+      "low gpa"
+    ],
+    "english": "Students under academic probation due to CGPA below 2.0 are restricted to a maximum of 12 credit hours per semester. During the final graduation semester, one additional course may be allowed if required for graduation.",
+    "arabic": "لا يسمح للطالب الموضوع تحت الملاحظة الأكاديمية بالتسجيل لأكثر من 12 ساعة معتمدة. في فصل التخرج يجوز تسجيل مقرر إضافي إذا كان ضرورياً للتخرج.",
+    "examples": [
+      "A student with a 1.9 CGPA is limited to 12 hours."
+    ]
+  },
+
+  {
+    "id": "reg_delayed_hours",
+    "category": "probation",
+    "priority": 9,
+    "tags": [
+      "academically delayed",
+      "16 hours",
+      "delayed status"
+    ],
+    "english": "Academically delayed students are restricted to a maximum of 16 credit hours per semester. Level 4 students are not classified as academically delayed.",
+    "arabic": "يقتصر الحد الأقصى للطالب المتعثر أكاديمياً على 16 ساعة معتمدة. لا يصنف طلاب المستوى الرابع كمتعثرين.",
+    "examples": [
+      "A delayed Level 2 student cannot register more than 16 hours."
+    ]
+  },
+
+  {
+    "id": "reg_summer",
+    "category": "registration",
+    "priority": 10,
+    "tags": [
+      "summer semester",
+      "6 hours",
+      "failed courses",
+      "summer registration"
+    ],
+    "english": "The maximum academic load during the summer semester is 6 credit hours. Students may only register courses they previously failed. Withdrawal is not allowed during summer semesters.",
+    "arabic": "الحد الأقصى للساعات في الفصل الصيفي هو 6 ساعات معتمدة. يسمح فقط بتسجيل المقررات التي سبق الرسوب فيها. لا يسمح بالانسحاب في الفصل الصيفي.",
+    "examples": [
+      "A student cannot register a new elective during summer."
+    ]
+  },
+
+  {
+    "id": "pre_req_general",
+    "category": "prerequisites",
+    "priority": 10,
+    "tags": [
+      "prerequisites",
+      "registration restriction",
+      "advanced courses"
+    ],
+    "english": "Students must successfully pass prerequisite courses before registering advanced courses.",
+    "arabic": "يشترط اجتياز المتطلبات السابقة قبل تسجيل المقررات المتقدمة.",
+    "examples": [
+      "Cannot register COMP 306 without passing COMP 212.",
+      "Cannot register STAT 204 without STAT 102."
+    ]
+  },
+
+  {
+    "id": "pre_req_senior_exception",
+    "category": "prerequisites",
+    "priority": 8,
+    "tags": [
+      "level 4",
+      "special approval",
+      "prerequisite exception"
+    ],
+    "english": "Level 4 students may register a course together with its failed prerequisite only after academic advisor and department approval.",
+    "arabic": "يجوز لطلاب المستوى الرابع تسجيل مقرر مع متطلبه الراسب فيه بعد موافقة المرشد الأكاديمي ورئيس القسم.",
+    "examples": [
+      "A Level 4 student may take COMP 411 together with a failed prerequisite."
+    ]
+  },
+
+  {
+    "id": "gpa_calculation",
+    "category": "gpa",
+    "priority": 8,
+    "tags": [
+      "gpa calculation",
+      "quality points",
+      "semester gpa",
+      "cgpa"
+    ],
+    "english": "Semester GPA equals total quality points divided by total registered credits. CGPA includes all semesters.",
+    "arabic": "المعدل الفصلي يساوي مجموع النقاط النوعية مقسوماً على مجموع الساعات المسجلة. المعدل التراكمي يشمل جميع الفصول الدراسية.",
+    "examples": [
+      "A 3-credit course with B+ contributes 9.99 quality points."
+    ]
+  },
+
+  {
+    "id": "probation_dismissal",
+    "category": "probation",
+    "priority": 10,
+    "tags": [
+      "probation dismissal",
+      "cgpa below 2",
+      "academic warning"
+    ],
+    "english": "Students whose CGPA remains below 2.0 for 4 consecutive regular semesters may face permanent dismissal from the college.",
+    "arabic": "إذا استمر المعدل التراكمي أقل من 2.0 لمدة أربعة فصول متتالية فقد يتعرض الطالب للفصل النهائي من الكلية.",
+    "examples": [
+      "A student who fails to recover CGPA after multiple probation semesters may be dismissed."
+    ]
+  },
+
+  {
+    "id": "withdrawal_w",
+    "category": "withdrawals",
+    "priority": 9,
+    "tags": [
+      "withdrawal",
+      "W grade",
+      "course withdrawal"
+    ],
+    "english": "Students may withdraw from a course before the withdrawal deadline and receive a W grade. W grades do not affect GPA but do not count toward graduation requirements.",
+    "arabic": "يجوز للطالب الانسحاب من مقرر والحصول على تقدير W قبل موعد الانسحاب. لا يؤثر W على المعدل لكنه لا يحتسب ضمن متطلبات التخرج.",
+    "examples": [
+      "A W grade does not count as a failed course."
+    ]
+  },
+
+  {
+    "id": "withdrawal_limit",
+    "category": "withdrawals",
+    "priority": 7,
+    "tags": [
+      "withdrawal limit",
+      "maximum withdrawals"
+    ],
+    "english": "Students may not exceed the maximum allowed number of course withdrawals during their academic study period.",
+    "arabic": "لا يجوز تجاوز الحد الأقصى المسموح به لمرات الانسحاب طوال فترة الدراسة.",
+    "examples": [
+      "A student with too many withdrawals may lose withdrawal eligibility."
+    ]
+  },
+
+  {
+    "id": "incomplete_i",
+    "category": "attendance",
+    "priority": 8,
+    "tags": [
+      "I grade",
+      "incomplete",
+      "missed final"
+    ],
+    "english": "An incomplete grade (I) is granted only when a student misses the final exam with an approved excuse and has sufficient coursework performance.",
+    "arabic": "يمنح تقدير غير مكتمل (I) فقط إذا تغيب الطالب عن الامتحان النهائي بعذر مقبول وكان مستواه في أعمال الفصل كافياً.",
+    "examples": [
+      "A student absent from finals due to illness may receive an I grade."
+    ]
+  },
+
+  {
+    "id": "absence_gh",
+    "category": "attendance",
+    "priority": 10,
+    "tags": [
+      "absence",
+      "غ",
+      "Abs",
+      "missed exam"
+    ],
+    "english": "An absence grade (غ / Abs) is assigned when a student misses a final exam without an accepted excuse. It counts as a failing grade in GPA calculations.",
+    "arabic": "يمنح الطالب تقدير غياب (غ / Abs) عند التغيب عن الامتحان النهائي بدون عذر مقبول، ويحسب كتقدير رسوب في المعدل.",
+    "examples": [
+      "Missing a final exam without documentation results in Abs."
+    ]
+  },
+
+  {
+    "id": "retake_rules",
+    "category": "improvement",
+    "priority": 10,
+    "tags": [
+      "retake",
+      "repeating courses",
+      "gpa improvement"
+    ],
+    "english": "Students may repeat failed courses to improve their academic standing. Retake regulations may limit how many hours can count with full grade replacement.",
+    "arabic": "يجوز للطلاب إعادة المقررات الراسبة لتحسين الوضع الأكاديمي. قد توجد قيود على عدد الساعات التي تحسب فيها الدرجة الفعلية بالكامل.",
+    "examples": [
+      "Repeating MATH 101 may improve CGPA."
+    ]
+  },
+
+  {
+    "id": "graduation_requirements",
+    "category": "graduation",
+    "priority": 10,
+    "tags": [
+      "graduation",
+      "140 hours",
+      "minimum cgpa"
+    ],
+    "english": "Students must complete 140 credit hours and achieve a minimum CGPA of 2.0 to graduate.",
+    "arabic": "يجب على الطالب إكمال 140 ساعة معتمدة والحصول على معدل تراكمي لا يقل عن 2.0 للتخرج.",
+    "examples": [
+      "A student with 139 hours cannot graduate yet."
+    ]
+  },
+
+  {
+    "id": "graduation_honors",
+    "category": "graduation",
+    "priority": 8,
+    "tags": [
+      "honors",
+      "distinction",
+      "high cgpa"
+    ],
+    "english": "Graduation honors require a CGPA between 3.60 and 4.00 and no failed courses during the academic study period.",
+    "arabic": "تتطلب مرتبة الشرف معدل تراكمي بين 3.60 و 4.00 وألا يكون الطالب قد رسب في أي مقرر خلال الدراسة.",
+    "examples": [
+      "A student with previous failures cannot graduate with honors."
+    ]
+  },
+
+  {
+    "id": "semester_rules",
+    "category": "semester_rules",
+    "priority": 9,
+    "tags": [
+      "fall semester",
+      "spring semester",
+      "odd courses",
+      "even courses"
+    ],
+    "english": "Courses with odd last digits are usually offered in Fall semesters, while courses with even last digits are usually offered in Spring semesters.",
+    "arabic": "المقررات ذات الأرقام الفردية تطرح عادة في فصل الخريف، بينما المقررات ذات الأرقام الزوجية تطرح عادة في فصل الربيع.",
+    "examples": [
+      "STAT 301 is usually a Fall course.",
+      "COMP 302 is usually a Spring course."
+    ]
+  },
+
+  {
+    "id": "elective_handling",
+    "category": "electives",
+    "priority": 8,
+    "tags": [
+      "electives",
+      "machine learning recommendation",
+      "course recommendation"
+    ],
+    "english": "When multiple electives satisfy the same academic requirement, recommendation systems may rank them based on student performance patterns and course difficulty.",
+    "arabic": "عند وجود أكثر من مقرر اختياري يحقق نفس المتطلب الأكاديمي، قد يتم ترتيبها باستخدام أنظمة التوصية بناءً على أداء الطالب وصعوبة المقرر.",
+    "examples": [
+      "The system may recommend one elective over another based on predicted success."
+    ]
+  },
+
+  {
+    "id": "practical_lab_rules",
+    "category": "lab_courses",
+    "priority": 8,
+    "tags": [
+      "practical courses",
+      "lab courses",
+      "final exam threshold"
+    ],
+    "english": "Practical and laboratory courses may require minimum scores in final exams in addition to coursework and lab participation.",
+    "arabic": "قد تشترط المقررات العملية والمعملية تحقيق حد أدنى في الامتحان النهائي بالإضافة إلى أعمال السنة والمشاركة العملية.",
+    "examples": [
+      "A student may fail a lab course despite strong coursework if the final exam threshold is not achieved."
+    ]
+  },
+
+  {
+    "id": "special_pass_fail_courses",
+    "category": "registration",
+    "priority": 7,
+    "tags": [
+      "ASU101",
+      "INCO102",
+      "pass fail"
+    ],
+    "english": "Some special university courses are graded using Pass/Fail grading and do not affect CGPA calculations.",
+    "arabic": "بعض المقررات الخاصة بالجامعة تقيّم بنظام ناجح/راسب ولا تدخل في حساب المعدل التراكمي.",
+    "examples": [
+      "ASU101 is evaluated as Pass/Fail."
+    ]
+  },
+
+  {
+    "id": "graduation_project_rules",
+    "category": "graduation",
+    "priority": 8,
+    "tags": [
+      "graduation project",
+      "level 4",
+      "project prerequisites"
+    ],
+    "english": "Graduation project courses require completion of core prerequisite courses and are generally restricted to Level 4 students.",
+    "arabic": "تتطلب مشروعات التخرج استيفاء المقررات الأساسية السابقة وتكون عادة مخصصة لطلاب المستوى الرابع.",
+    "examples": [
+      "COMP 411 requires core programming prerequisites."
+    ]
+  },
+
+  {
+    "id": "ml_recommendation_reasoning",
+    "category": "ml_explanations",
+    "priority": 9,
+    "tags": [
+      "machine learning",
+      "recommendation reasoning",
+      "course difficulty",
+      "predicted challenge"
+    ],
+    "english": "The AI recommendation system ranks courses using student GPA trends, historical course difficulty, failed-course history, and performance patterns from similar students.",
+    "arabic": "يقوم نظام التوصية الذكي بترتيب المقررات باستخدام اتجاهات المعدل التراكمي وصعوبة المقررات وسجل الرسوب وأنماط أداء الطلاب المشابهين.",
+    "examples": [
+      "Students struggling in practical courses may receive recommendations for lighter theoretical courses."
+    ]
+  }
+]

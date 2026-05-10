@@ -42,3 +42,15 @@ htmlcov/
 
 # Compiled assets
 *.pyc
+node_modules
+
+# ML runtime artifacts (generated at runtime, not source)
+backend/ml/models/*.pkl
+backend/ml/models/*.lock
+backend/ml/models/training_state.json
+
+# Temp upload folder created by Flask
+backend/uploads/
+
+# Frontend build output
+frontend/dist/
