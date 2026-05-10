@@ -27,6 +27,7 @@ from datetime import date
 import pandas as pd
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, jsonify, request, session
+from flask_cors import CORS
 import database
 from ml import r2_storage
 from parser.transcript_parser import parse_transcript
@@ -45,6 +46,10 @@ log = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "gpa-goes-up-dev-secret-2025")
+
+_allowed_origin = os.environ.get("FRONTEND_ORIGIN", "http://localhost:5173")
+CORS(app, origins=[_allowed_origin], supports_credentials=True)
+
 app.register_blueprint(chatbot_bp, url_prefix="/api")
 
 # Pull CSVs + trained model from Cloudflare R2 on every cold start so the

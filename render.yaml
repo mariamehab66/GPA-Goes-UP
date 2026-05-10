@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: gpa-goes-up-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 2 -b 0.0.0.0:$PORT --timeout 120 backend.app:app
+    plan: free
+    envVars:
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "4000"
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: gpa_goes
+      - key: DB_SSL
+        value: "true"
+      - key: R2_ENDPOINT_URL
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_BUCKET_NAME
+        value: gpa-goes-up
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
