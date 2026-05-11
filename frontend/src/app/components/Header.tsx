@@ -2,6 +2,7 @@
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router";
 import ThemeToggle from "./ThemeToggle";
+import logo from "@/LOGO.png";
 
 type NavItem = {
   label: string;
@@ -39,7 +40,7 @@ export function Header() {
         {/* Logo + Brand */}
         <div className="flex items-center gap-3">
           <img
-            src="/src/LOGO.png"
+            src={logo}
             alt="GPA Goes Logo"
             width={80}
             height={80}
