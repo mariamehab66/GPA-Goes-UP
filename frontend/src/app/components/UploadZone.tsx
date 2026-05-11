@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { FileText, CloudUpload, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router";
-import { apiUrl } from "@/lib/api";
+import { apiFetch } from "@/lib/api";
 
 export function UploadZone() {
   const [dragging,    setDragging]    = useState(false);
@@ -35,7 +35,7 @@ export function UploadZone() {
     formData.append("file", file);
 
     try {
-      const res = await fetch(apiUrl("/api/upload"), { method: "POST", body: formData });
+      const res = await apiFetch("/api/upload", { method: "POST", body: formData });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.error ?? "Upload failed. Please try again.");
