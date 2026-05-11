@@ -313,7 +313,7 @@ export function PlannerPage() {
     setApiError(null);
 
     try {
-      const res  = await apiFetch("/api/planner/autofill"));
+      const res  = await apiFetch("/api/planner/autofill");
       const data = await res.json();
 
       if (!res.ok) {
