@@ -1,8 +1,8 @@
-﻿import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { useAppData } from "../context/AppDataContext";
 import type { AppData } from "../context/AppDataContext";
-import { apiUrl } from "@/lib/api";
+import { apiFetch } from "@/lib/api";
 import ThemeToggle from "../components/ThemeToggle";
 
 const STATUS_MESSAGES = [
@@ -16,7 +16,7 @@ const MIN_DISPLAY_MS = 4500;
 // ── API helpers ───────────────────────────────────────────────────────────────
 
 async function fetchStudentId(): Promise<number> {
-  const res = await fetch(apiUrl("/api/session/student-id"));
+  const res = await apiFetch("/api/session/student-id");
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error ?? "No active session. Please upload your transcript first.");
@@ -28,7 +28,7 @@ async function fetchStudentId(): Promise<number> {
 type ApiError = { code: string };
 
 async function fetchRecommendations(studentId: number, targetSemester: string): Promise<Omit<AppData, 'fileName'>> {
-  const res = await fetch(apiUrl("/api/recommend"), {
+  const res = await apiFetch("/api/recommend", {
     method:  "POST",
     headers: { "Content-Type": "application/json" },
     body:    JSON.stringify({ student_id: studentId, target_semester: targetSemester }),
