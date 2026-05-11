@@ -1,8 +1,8 @@
-﻿import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { BotMessageSquare, X, Send, Maximize2, Minimize2 } from "lucide-react";
 import { useIsMobile } from "./ui/use-mobile";
 import { useAppData } from "../context/AppDataContext";
-import { apiUrl } from "@/lib/api";
+import { apiFetch } from "@/lib/api";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -82,7 +82,7 @@ export function ChatbotFAB({ pageContext = "" }: { pageContext?: string } = {}) 
     setLoading(true);
 
     try {
-      const res  = await fetch(apiUrl("/api/chat"), {
+      const res  = await apiFetch("/api/chat", {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
