@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router";
 import ThemeToggle from "./ThemeToggle";
+import logo from "@/LOGO.png";
 
 export type DashboardNavItem = {
   label: string;
@@ -52,7 +53,7 @@ export function DashboardHeader({
         {/* Logo + Brand */}
         <div className="flex items-center gap-3">
           <img
-            src="/src/LOGO.png"
+            src={logo}
             alt="GPA Goes Logo"
             width={80}
             height={80}
