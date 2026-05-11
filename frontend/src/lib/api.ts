@@ -13,5 +13,6 @@ export const API_BASE: string = import.meta.env.VITE_API_URL ?? "";
 /** Build a full API URL from a path that starts with /api/ */
 export const apiUrl = (path: string): string => `${API_BASE}${path}`;
 
+/** fetch wrapper that always includes credentials (session cookie) */
 export const apiFetch = (path: string, init: RequestInit = {}): Promise<Response> =>
   fetch(apiUrl(path), { ...init, credentials: "include" });
