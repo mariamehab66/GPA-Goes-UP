@@ -354,10 +354,10 @@ export function PlannerPage() {
 
     try {
       const res  = await apiFetch("/api/planner/calculate", {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ cgpa: c, earnedHours: e, hoursForGrad: g, targetGpa: t }),
-      };
+      method:  "POST",
+      headers: { "Content-Type": "application/json" },
+      body:    JSON.stringify({ cgpa: c, earnedHours: e, hoursForGrad: g, targetGpa: t }),
+      });
       const data = await res.json();
 
       if (!res.ok) {
