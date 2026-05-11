@@ -1,9 +1,9 @@
-﻿import { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import {
   Sparkles, Target, TrendingUp, ChevronRight, Trophy,
   AlertCircle, Zap, Loader2,
 } from "lucide-react";
-import { apiUrl } from "@/lib/api";
+import { apiFetch } from "@/lib/api";
 import { DashboardHeader, SIMULATOR_NAV } from "../components/DashboardHeader";
 import { Sidebar } from "../components/dashboard/Sidebar";
 import { AboutSection } from "../components/AboutSection";
@@ -313,7 +313,7 @@ export function PlannerPage() {
     setApiError(null);
 
     try {
-      const res  = await fetch(apiUrl("/api/planner/autofill"));
+      const res  = await apiFetch("/api/planner/autofill"));
       const data = await res.json();
 
       if (!res.ok) {
@@ -353,7 +353,7 @@ export function PlannerPage() {
     setApiError(null);
 
     try {
-      const res  = await fetch(apiUrl("/api/planner/calculate"), {
+      const res  = await apiFetch("/api/planner/calculate"), {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify({ cgpa: c, earnedHours: e, hoursForGrad: g, targetGpa: t }),
